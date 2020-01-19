@@ -28,7 +28,14 @@ public class RobotContainer {
   
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
+  // Creates a joystick on port 1
+   //Joystick exampleStick = new Joystick(1);
+  
+  // Creates an XboxController on port 2.
+    //XboxController exampleController = new XboxController(2); 
 
+  // Creates a new JoystickButton object for button 1 on exampleStick
+    //JoystickButton exampleButton = new JoystickButton(exampleStick, 1); 
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -37,6 +44,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
   }
+  
 
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
@@ -44,7 +52,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
+  
   private void configureButtonBindings() {
+    // Binds an ExampleCommand to be scheduled when the trigger of the example joystick is pressed
+      //exampleButton.whenPressed(new ExampleCommand());
+
   }
 
 
