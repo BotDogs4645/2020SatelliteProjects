@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
 import frc.robot.subsystems.Motor;
 import frc.robot.subsystems.UltrasonicSensor;
 
@@ -16,9 +15,11 @@ public class ObstacleDetect extends CommandBase {
   /**
    * Creates a new ObstacleDetect.
    */
-  public ObstacleDetect(UltrasonicSensor ultralord, Motor mMotor) {
-    ultralord = RobotContainer.UltrasonicSensorSub;
-    mMotor = new Motor();
+  private final UltrasonicSensor ultralord;
+  private final Motor mMotor;
+  public ObstacleDetect(UltrasonicSensor pUltrasonic, Motor pMotor) {
+    ultralord = pUltrasonic;
+    mMotor = pMotor;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(ultralord);
     addRequirements(mMotor);
@@ -32,13 +33,18 @@ public class ObstacleDetect extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mMotor.move(0.5);
-
+    if (ultralord.getDistance() > 6){
+      mMotor.move(0.5);
+    }
+    mMotor.move(0);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    if(interrupted){
+      mMotor.move(0);
+    }
   }
 
   // Returns true when the command should end.
