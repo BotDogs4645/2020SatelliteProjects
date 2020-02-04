@@ -15,7 +15,7 @@ public class Motor extends SubsystemBase {
   /**
    * Creates a new Motor.
    */
-  private final WPI_TalonSRX motor = new WPI_TalonSRX(10);
+  private final WPI_TalonSRX motor = new WPI_TalonSRX(1);
   public Motor() {
 
   }

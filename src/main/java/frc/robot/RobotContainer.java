@@ -24,8 +24,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  public final Motor motorSub = new Motor();
-  public final UltrasonicSensor ultraSub = new UltrasonicSensor();
+  public static final Motor motorSub = new Motor();
+  public static final UltrasonicSensor ultraSub = new UltrasonicSensor();
 
   
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
