@@ -10,20 +10,20 @@ package frc.robot.subsystems;
 import frc.robot.RobotContainer;
 import frc.robot.commands.ObstacleDetect;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 public class UltrasonicSensor extends SubsystemBase {
   /**
    * Creates a new UltrasonicSensor.
    */
-  Ultrasonic ultralord = new Ultrasonic(0, 0);
+  AnalogInput ultralord = new AnalogInput(0);
   public UltrasonicSensor() {
-    ultralord.setAutomaticMode(true);
     setDefaultCommand(new ObstacleDetect(this, RobotContainer.motorSub));
   }
 
   public double getDistance(){
-    return ultralord.getRangeInches();
+    return ultralord.getValue();
+    
   }
   
   /*public void destroySensor(){

@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Motor;
 import frc.robot.subsystems.UltrasonicSensor;
@@ -33,10 +34,13 @@ public class ObstacleDetect extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (ultralord.getDistance() > 6){
+    SmartDashboard.putNumber("Distance", ultralord.getDistance());
+    if (ultralord.getDistance() > 300){
       mMotor.move(0.5);
     }
-    mMotor.move(0);
+    else{
+      mMotor.move(0);
+    }
   }
 
   // Called once the command ends or is interrupted.
