@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -27,6 +28,8 @@ public class RobotContainer {
 
   
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+
+  public Joystick jStick = new Joystick(0);
 
   // Creates a joystick on port 1
    //Joystick exampleStick = new Joystick(1);
