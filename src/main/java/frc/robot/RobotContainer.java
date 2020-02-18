@@ -7,9 +7,13 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Motor;
@@ -29,7 +33,19 @@ public class RobotContainer {
   
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
-  public Joystick jStick = new Joystick(0);
+  public static final Joystick jStick = new Joystick(0);
+
+  static WPI_TalonSRX lFront = new WPI_TalonSRX(0);
+  static WPI_TalonSRX lMid = new WPI_TalonSRX(1);
+  static WPI_TalonSRX lBack = new WPI_TalonSRX(2);
+
+  static WPI_TalonSRX rFront = new WPI_TalonSRX(3);
+  static WPI_TalonSRX rMid = new WPI_TalonSRX(4);
+  static WPI_TalonSRX rBack = new WPI_TalonSRX(5);
+
+  static SpeedControllerGroup leftSide = new SpeedControllerGroup(lFront, lMid, lBack);
+  static SpeedControllerGroup rightSide = new SpeedControllerGroup(rFront, rMid, rBack);
+  public static DifferentialDrive tDrive = new DifferentialDrive(leftSide, rightSide);
 
   // Creates a joystick on port 1
    //Joystick exampleStick = new Joystick(1);

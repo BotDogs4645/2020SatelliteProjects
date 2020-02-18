@@ -7,30 +7,32 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotContainer;
+import frc.robot.commands.Drive;
 
 public class TankD extends SubsystemBase {
   /**
    * Creates a new TankD.
    */
-  WPI_TalonSRX lFront = new WPI_TalonSRX(0);
-  WPI_TalonSRX lMid = new WPI_TalonSRX(1);
-  WPI_TalonSRX lBack = new WPI_TalonSRX(2);
-
-  WPI_TalonSRX rFront = new WPI_TalonSRX(3);
-  WPI_TalonSRX rMid = new WPI_TalonSRX(4);
-  WPI_TalonSRX rBack = new WPI_TalonSRX(5);
-
-  SpeedControllerGroup leftSide = new SpeedControllerGroup(lFront, lMid, lBack){};
-  SpeedControllerGroup rightSide = new SpeedControllerGroup(rFront, rMid, rBack);
-  DifferentialDrive tDrive = new DifferentialDrive(leftSide, rightSide);
 
   public TankD() {
+    setDefaultCommand(new Drive(this));
+  }
 
+  public void joystickDrive(){
+    double throttle = RobotContainer.jStick.getY()*.08;
+    double turn = RobotContainer.jStick.getX() *.08;
+
+    //deadzone
+    if(Math.abs(throttle) < 0.05){
+      throttle = 0;
+    }
+    if(Math.abs(turn) < 0.05){
+      turn = 0;
+    }
+
+    RobotContainer.tDrive.arcadeDrive(throttle, turn);
   }
 
   @Override
