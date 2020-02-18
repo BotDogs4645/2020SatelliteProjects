@@ -5,27 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package frc.robot.commands;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+public class UseSensor extends CommandBase {
+  
+  //Subsystem the command runs on
 
-public class Motor extends SubsystemBase {
-  /**
-   * Creates a new Motor.
-   */
-  private final WPI_TalonSRX motor = new WPI_TalonSRX(10);
-  public Motor() {
-
-  }
-
-  public void move(double speed) {
-    motor.set(speed);
-  }
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
+    
+    return false;
   }
 }
