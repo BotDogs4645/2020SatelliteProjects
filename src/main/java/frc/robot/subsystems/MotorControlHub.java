@@ -7,23 +7,14 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Motor extends SubsystemBase {
+public class MotorControlHub extends SubsystemBase {
   /**
-   * Creates a new Motor.
+   * Creates a new ControlHub.
    */
-  char foundcolor;
-  char targetcolor = 'tc' ;
-  private final WPI_TalonSRX motor = new WPI_TalonSRX(10);
-  public Motor() {
+  public MotorControlHub() {
 
-  }
-
-  public void move(double speed) {
-    motor.set(speed);
   }
 
   @Override

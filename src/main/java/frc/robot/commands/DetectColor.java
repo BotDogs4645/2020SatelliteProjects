@@ -6,7 +6,9 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.Robot;
+
+//import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.ColorSensor;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -17,30 +19,28 @@ public class DetectColor extends CommandBase {
   private final ColorSensor colorSensor;
 
 
-  public DetectColor() {
+  public DetectColor(ColorSensor cs) {
     // Use addRequirements() here to declare subsystem dependencies.
     // Use requires() here to declare subsystem dependencies
       // eg. requires(chassis);
-      colorSensor = subsystem;
-      addRequirements(Robot.kColorSensor);
-      addRequirements(subsystem);
+      colorSensor = cs;
+      addRequirements(colorSensor);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.kColorSensor.setAcive();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    RobotContainer.colorSense.getColor();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.kColorSensor.getColor();
   }
 
   // Returns true when the command should end.
@@ -50,13 +50,11 @@ public class DetectColor extends CommandBase {
   }
   // Called once after isFinished returns true
   protected void end() {
-    Robot.kColorSensor.setPassive();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   protected void interrupted() {
-    Robot.kColorSensor.setPassive();
   }
 
 }
