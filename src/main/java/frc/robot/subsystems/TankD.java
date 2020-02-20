@@ -21,8 +21,8 @@ public class TankD extends SubsystemBase {
   }
 
   public void joystickDrive(){
-    double throttle = RobotContainer.jStick.getY()*.08;
-    double turn = RobotContainer.jStick.getX() *.08;
+    double throttle = RobotContainer.jStick.getY()*.8;
+    double turn = RobotContainer.jStick.getX() *.8;
 
     //deadzone
     if(Math.abs(throttle) < 0.05){
