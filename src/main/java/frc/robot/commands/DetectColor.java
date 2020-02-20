@@ -7,44 +7,50 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+//import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
+import frc.robot.subsystems.ColorSensor;
+import frc.robot.RobotContainer;
 
-public class DetectColor extends Command {
-  public DetectColor() {
-    requires(Robot.colorSensor);
+
+public class DetectColor extends CommandBase {
+  private final ColorSensor colorSensor;
+  public DetectColor(ColorSensor cs) {
+    colorSensor = cs;
+    addRequirements(colorSensor);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {
-    Robot.colorSensor.setAcive();
+  public void initialize() {
+  
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
-    Robot.colorSensor.getColor();
+  public void execute() {
+    RobotContainer.coolcolor.getColor();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {
+  public boolean isFinished() {
     return false;
   }
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {
-    Robot.colorSensor.setPassive();
+  public void end(boolean interrupted) {
+    
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-    Robot.colorSensor.setPassive();
-  }
+  // @Override
+  // public void interrupted() {
+  //   Robot.colorSensor.setPassive();
+  // }
 }
