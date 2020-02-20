@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Motor;
+import frc.robot.subsystems.TankD;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -29,23 +30,23 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public final Motor motorSub = new Motor();
-
+  public final TankD tank = new TankD();
   
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   public static final Joystick jStick = new Joystick(0);
 
-  static WPI_TalonSRX lFront = new WPI_TalonSRX(0);
-  static WPI_TalonSRX lMid = new WPI_TalonSRX(1);
-  static WPI_TalonSRX lBack = new WPI_TalonSRX(2);
+  public static WPI_TalonSRX lFront = new WPI_TalonSRX(4);
+  public static WPI_TalonSRX lMid = new WPI_TalonSRX(5);
+  public static WPI_TalonSRX lBack = new WPI_TalonSRX(6);
 
-  static WPI_TalonSRX rFront = new WPI_TalonSRX(3);
-  static WPI_TalonSRX rMid = new WPI_TalonSRX(4);
-  static WPI_TalonSRX rBack = new WPI_TalonSRX(5);
+  public static WPI_TalonSRX rFront = new WPI_TalonSRX(1);
+  public static WPI_TalonSRX rMid = new WPI_TalonSRX(2);
+  public static WPI_TalonSRX rBack = new WPI_TalonSRX(10);
 
   static SpeedControllerGroup leftSide = new SpeedControllerGroup(lFront, lMid, lBack);
   static SpeedControllerGroup rightSide = new SpeedControllerGroup(rFront, rMid, rBack);
-  public static DifferentialDrive tDrive = new DifferentialDrive(leftSide, rightSide);
+  //tankdrive
 
   // Creates a joystick on port 1
    //Joystick exampleStick = new Joystick(1);
@@ -62,8 +63,11 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    rMid.setInverted(true);
+    lMid.setInverted(true);
   }
   
+  public static DifferentialDrive tDrive = new DifferentialDrive(leftSide, rightSide);
 
   /**
    * Use this method to define your button->command mappings.  Buttons can be created by
