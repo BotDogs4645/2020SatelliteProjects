@@ -14,6 +14,9 @@ import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Motor;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.MotorControlHub;
+
+
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -26,6 +29,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public final Motor motorSub = new Motor();
   public final static ColorSensor coolcolor = new ColorSensor();
+  public final static MotorControlHub m_controlpanelsub = new MotorControlHub();
 
   
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);

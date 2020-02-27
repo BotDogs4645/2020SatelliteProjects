@@ -40,7 +40,10 @@ public class ColorSensor extends SubsystemBase {
 
   public void setPassive() {
 		colorSensor.write(0x03, 0x01); 
-	}
+  }
+  public char getColorChar() {
+    return colorString.charAt(0);
+  }
 
 
   /**
